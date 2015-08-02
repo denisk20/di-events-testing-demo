@@ -29,13 +29,15 @@ public class WeatherManager {
         bus.register(this);
     }
 
-    public void fetchWeather(Response.ErrorListener errorListener) {
+    public void fetchWeather(final Response.Listener<CurrentWeather> successListener, Response.ErrorListener errorListener) {
         weatherNetClient.fetchCurrentWeather(new Response.Listener<CurrentWeather>() {
             @Override
             public void onResponse(CurrentWeather currentWeather) {
                 preferencesManager.persistWeather(currentWeather);
 
                 bus.post(new WeatherUpdatedEvent(currentWeather));
+
+                successListener.onResponse(currentWeather);
             }
         }, errorListener);
     }

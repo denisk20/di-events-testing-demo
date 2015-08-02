@@ -1,8 +1,13 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:actionBarStyle">@style/ActionBarThemeSFOrange</item>
+    </style>
+
+    <style name="ActionBarThemeSFOrange">
+        <item name="android:background">#f26322</item>
+        <item name="android:textColorPrimary">#fff</item>
     </style>
 
 </resources>

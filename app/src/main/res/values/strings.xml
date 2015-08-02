@@ -3,4 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="weather_fetched">Weather updated!</string>
+    <string name="fetch_failed">Weather fetch failed</string>
 </resources>

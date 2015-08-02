@@ -44,7 +44,7 @@ public class WeatherNetClient implements IWeatherNetClient {
                 try {
                     String city = response.getString("name");
 
-                    JSONObject weather = response.getJSONObject("weather");
+                    JSONObject weather = response.getJSONArray("weather").getJSONObject(0);
                     String description = weather.getString("main");
                     String detailedDescription = weather.getString("description");
                     String icon = weather.getString("icon");
@@ -76,7 +76,7 @@ public class WeatherNetClient implements IWeatherNetClient {
                     successListener.onResponse(currentWeather);
 
                 } catch (JSONException e) {
-                    errorListener.onErrorResponse(new ParseError(new Exception("Can't parse response: " + response)));
+                    errorListener.onErrorResponse(new ParseError(new Exception("Can't parse response: " + response, e)));
                 }
             }
         }, errorListener));

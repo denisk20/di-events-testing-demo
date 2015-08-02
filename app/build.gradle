@@ -11,6 +11,11 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -25,5 +30,8 @@ dependencies {
     provided "com.squareup.dagger:dagger-compiler:$daggerVersion"
 
     compile project(':managers')
-    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile "com.android.support:appcompat-v7:$appCompatVersion"
+    compile "com.android.support:design:$appCompatVersion"
+
+    compile 'com.jakewharton:butterknife:7.0.1'
 }

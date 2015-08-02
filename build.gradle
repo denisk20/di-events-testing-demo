@@ -17,9 +17,12 @@ allprojects {
         jcenter()
     }
 }
+
 ext {
     daggerVersion = '1.2.2'
+    appCompatVersion = '22.2.1'
 }
+
 subprojects {
     if (!"app".equals(name)) {
         //common java setup
