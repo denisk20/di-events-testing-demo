@@ -29,8 +29,8 @@ public class WeatherManager {
         bus.register(this);
     }
 
-    public void fetchWeather(final Response.Listener<CurrentWeather> successListener, Response.ErrorListener errorListener) {
-        weatherNetClient.fetchCurrentWeather(new Response.Listener<CurrentWeather>() {
+    public void fetchWeather(int cityId, final Response.Listener<CurrentWeather> successListener, Response.ErrorListener errorListener) {
+        weatherNetClient.fetchCurrentWeather(cityId, new Response.Listener<CurrentWeather>() {
             @Override
             public void onResponse(CurrentWeather currentWeather) {
                 preferencesManager.persistWeather(currentWeather);

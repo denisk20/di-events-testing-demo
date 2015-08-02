@@ -10,4 +10,8 @@ public interface IPreferencesManager {
     void persistWeather(CurrentWeather weather);
 
     CurrentWeather getWeather();
+
+    int getSelectedCityId();
+
+    void setSelectedCityId(int cityId);
 }

@@ -6,8 +6,25 @@
     </style>
 
     <style name="ActionBarThemeSFOrange">
-        <item name="android:background">#f26322</item>
-        <item name="android:textColorPrimary">#fff</item>
+        <item name="android:background">#81E3CE</item>
     </style>
 
+    <style name="Row">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+    <style name="Label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0.7</item>
+    </style>
+    <style name="Value">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0.3</item>
+        <item name="android:layout_marginRight">@dimen/right_margin</item>
+        <item name="android:gravity">right</item>
+    </style>
 </resources>

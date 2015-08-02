@@ -19,6 +19,7 @@ public class PreferencesManager implements IPreferencesManager {
     public static final String WIND = "wind";
     public static final String WIND_DIRECTION = "wind_direction";
     public static final String ICON = "icon";
+    public static final String CITY_ID = "city_id";
 
     private SharedPreferences prefs;
 
@@ -62,5 +63,15 @@ public class PreferencesManager implements IPreferencesManager {
         currentWeather.setIconId(prefs.getString(ICON, "01d"));
 
         return currentWeather;
+    }
+
+    @Override
+    public int getSelectedCityId() {
+        return prefs.getInt(CITY_ID, 0);
+    }
+
+    @Override
+    public void setSelectedCityId(int cityId) {
+        prefs.edit().putInt(CITY_ID, cityId).apply();
     }
 }

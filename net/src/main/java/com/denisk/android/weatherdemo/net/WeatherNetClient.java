@@ -16,20 +16,19 @@ import org.json.JSONObject;
  */
 public class WeatherNetClient implements IWeatherNetClient {
     public static final String WEATHER_API_URL = "http://api.openweathermap.org/data/2.5/weather";
-    public static final String WEATHER_IMAGE_URL = "http://openweathermap.org/img/w";
 
-    public static final int CITY_ID = 706483;  //Kharkiv, Ukraine
     public static final String ACCESS_TOKEN = "16f7300ce82fc1067fdab62bafdc8df4";
 
     private RequestQueue requestQueue;
-    private String url;
 
     public WeatherNetClient(RequestQueue requestQueue) {
         this.requestQueue = requestQueue;
+    }
 
-        url = Uri.parse(WEATHER_API_URL)
+    private String getUrl(int cityId) {
+        return Uri.parse(WEATHER_API_URL)
                 .buildUpon()
-                .appendQueryParameter("id", Integer.toString(CITY_ID))
+                .appendQueryParameter("id", cityId + "")
                 .appendQueryParameter("units", "metric")
                 .appendQueryParameter("APPID", ACCESS_TOKEN)
                 .build()
@@ -37,8 +36,8 @@ public class WeatherNetClient implements IWeatherNetClient {
     }
 
     @Override
-    public void fetchCurrentWeather(final Response.Listener<CurrentWeather> successListener, final Response.ErrorListener errorListener) {
-        requestQueue.add(new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
+    public void fetchCurrentWeather(int cityId, final Response.Listener<CurrentWeather> successListener, final Response.ErrorListener errorListener) {
+        requestQueue.add(new JsonObjectRequest(Request.Method.GET, getUrl(cityId), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -62,7 +61,7 @@ public class WeatherNetClient implements IWeatherNetClient {
 
                     CurrentWeather currentWeather = new CurrentWeather();
                     currentWeather.setCity(city);
-                    currentWeather.setDetailedDescription(description);
+                    currentWeather.setDescription(description);
                     currentWeather.setDetailedDescription(detailedDescription);
                     currentWeather.setIconId(icon);
                     currentWeather.setTemp(temp);

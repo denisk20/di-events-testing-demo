@@ -8,5 +8,5 @@ import com.denisk.android.weatherdemo.CurrentWeather;
  * @since 8/2/15.
  */
 public interface IWeatherNetClient {
-    void fetchCurrentWeather(Response.Listener<CurrentWeather> successListener, Response.ErrorListener errorListener);
+    void fetchCurrentWeather(int cityId, Response.Listener<CurrentWeather> successListener, Response.ErrorListener errorListener);
 }
