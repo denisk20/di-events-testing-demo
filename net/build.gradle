@@ -2,5 +2,5 @@ apply plugin: 'java'
 
 dependencies {
     compile 'com.mcxiaoke.volley:library:1.0.18'
-    project(":models")
+    compile project(":models")
 }
