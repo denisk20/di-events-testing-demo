@@ -5,23 +5,27 @@ package com.denisk.android.weatherdemo;
  * @since 8/2/15.
  */
 public class CurrentWeather {
-    String city;
+    private String city;
 
-    String description;
+    private String description;
 
-    String descriptionDetailed;
+    private String detailedDescription;
 
-    float temp;
+    private float temp;
 
-    float minTemp;
+    private float minTemp;
 
-    float maxTemp;
+    private float maxTemp;
 
-    float wind;
+    private float humidity;
 
-    float windDirection;
+    private float wind;
 
-    float pressure;
+    private float windDirection;
+
+    private float pressure;
+
+    private String iconId;
 
     public String getCity() {
         return city;
@@ -39,12 +43,12 @@ public class CurrentWeather {
         this.description = description;
     }
 
-    public String getDescriptionDetailed() {
-        return descriptionDetailed;
+    public String getDetailedDescription() {
+        return detailedDescription;
     }
 
-    public void setDescriptionDetailed(String descriptionDetailed) {
-        this.descriptionDetailed = descriptionDetailed;
+    public void setDetailedDescription(String detailedDescription) {
+        this.detailedDescription = detailedDescription;
     }
 
     public float getTemp() {
@@ -71,6 +75,14 @@ public class CurrentWeather {
         this.maxTemp = maxTemp;
     }
 
+    public float getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(float humidity) {
+        this.humidity = humidity;
+    }
+
     public float getWind() {
         return wind;
     }
@@ -93,5 +105,13 @@ public class CurrentWeather {
 
     public void setPressure(float pressure) {
         this.pressure = pressure;
+    }
+
+    public String getIconId() {
+        return iconId;
+    }
+
+    public void setIconId(String iconId) {
+        this.iconId = iconId;
     }
 }
