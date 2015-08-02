@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.denisk.android.weatherdemo.common.Util;
 import com.denisk.android.weatherdemo.common.di.CommonModule;
 import com.denisk.android.weatherdemo.di.WeatherActivityModule;
 import com.denisk.android.weatherdemo.managers.IPreferencesManager;
@@ -27,7 +28,6 @@ import com.squareup.otto.Subscribe;
 import dagger.ObjectGraph;
 
 import javax.inject.Inject;
-import java.util.Arrays;
 
 public class WeatherActivity extends AppCompatActivity {
     public static final String WEATHER_IMAGE_URL = "http://openweathermap.org/img/w/";
@@ -36,6 +36,7 @@ public class WeatherActivity extends AppCompatActivity {
     @Inject WeatherManager weatherManager;
     @Inject Bus bus;
     @Inject ImageLoader imageLoader;
+    @Inject Util util;
 
     @Bind(R.id.city) TextView city;
     @Bind(R.id.icon) NetworkImageView icon;
@@ -79,7 +80,7 @@ public class WeatherActivity extends AppCompatActivity {
             selectedCityId = cityIds[0];
             preferencesManager.setSelectedCityId(selectedCityId);
         }
-        citySelector.setSelection(Arrays.binarySearch(cityIds, selectedCityId));
+        citySelector.setSelection(util.indexOf(cityIds, selectedCityId));
     }
 
     @Override

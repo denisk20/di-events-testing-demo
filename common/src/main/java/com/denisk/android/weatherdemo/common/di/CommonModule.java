@@ -1,6 +1,7 @@
 package com.denisk.android.weatherdemo.common.di;
 
 import android.content.Context;
+import com.denisk.android.weatherdemo.common.Util;
 import dagger.Module;
 import dagger.Provides;
 
@@ -24,5 +25,11 @@ public class CommonModule {
     @Singleton
     Context provideContext() {
         return context;
+    }
+
+    @Provides
+    @Singleton
+    Util provideUtil() {
+        return new Util();
     }
 }
