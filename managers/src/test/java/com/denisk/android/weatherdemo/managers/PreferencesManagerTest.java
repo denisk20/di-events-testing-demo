@@ -27,34 +27,6 @@ import static org.mockito.Mockito.when;
  */
 public class PreferencesManagerTest {
 
-    @Inject PreferencesManager preferencesManager;
-    @Inject SharedPreferences sharedPreferences;
-    @Inject SharedPreferences.Editor editor;
-
-    @Before
-    public void setUp() throws Exception {
-        ObjectGraph.create(new PreferencesManagerTestModule()).inject(this);
-
-    }
-
-    @Test
-    public void testGetWeather() throws Exception {
-        float temp = 22f;
-        when(sharedPreferences.getFloat(eq(PreferencesManager.TEMP), anyFloat())).thenReturn(temp);
-
-        assertEquals(temp, preferencesManager.getWeather().getTemp(), 0);
-    }
-
-    @Test
-    public void testPersistWeather() {
-        CurrentWeather weather = new CurrentWeather();
-        String city = "MyCity";
-        weather.setCity(city);
-        preferencesManager.persistWeather(weather);
-
-        verify(editor, times(1)).putString(PreferencesManager.CITY, city);
-    }
-
     @Module(
             injects = PreferencesManagerTest.class
     )
@@ -86,5 +58,35 @@ public class PreferencesManagerTest {
         PreferencesManager providePreferencesManager(SharedPreferences sharedPreferences) {
             return new PreferencesManager(sharedPreferences);
         }
+    }
+
+    @Inject PreferencesManager preferencesManager;
+    @Inject SharedPreferences sharedPreferences;
+    @Inject SharedPreferences.Editor editor;
+
+    @Before
+    public void setUp() throws Exception {
+        ObjectGraph.create(new PreferencesManagerTestModule()).inject(this);
+
+    }
+
+    @Test
+    public void testGetWeather() throws Exception {
+        float temp = 22f;
+
+        when(sharedPreferences.getFloat(eq(PreferencesManager.TEMP), anyFloat())).thenReturn(temp);
+
+        assertEquals(temp, preferencesManager.getWeather().getTemp(), 0);
+    }
+
+    @Test
+    public void testPersistWeather() {
+        CurrentWeather weather = new CurrentWeather();
+        String city = "MyCity";
+        weather.setCity(city);
+
+        preferencesManager.persistWeather(weather);
+
+        verify(editor, times(1)).putString(PreferencesManager.CITY, city);
     }
 }
