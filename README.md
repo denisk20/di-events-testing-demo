@@ -12,6 +12,7 @@ Technologies used:
  * [Dagger 1](http://square.github.io/dagger/) for dependency injection
  * [Otto](http://square.github.io/otto/) for event handling
  * [Espresso 2](https://code.google.com/p/android-test-kit/) for testing
+ * (bonus) [Volley](https://developer.android.com/training/volley/index.html) for networking
  * (bonus) [Butterknife](http://jakewharton.github.io/butterknife/) for view injection
 
 # Building and running
