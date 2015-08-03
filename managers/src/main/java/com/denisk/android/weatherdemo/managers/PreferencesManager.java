@@ -74,4 +74,9 @@ public class PreferencesManager implements IPreferencesManager {
     public void setSelectedCityId(int cityId) {
         prefs.edit().putInt(CITY_ID, cityId).apply();
     }
+
+    @Override
+    public void clear() {
+        prefs.edit().clear().apply();
+    }
 }

@@ -14,4 +14,6 @@ public interface IPreferencesManager {
     int getSelectedCityId();
 
     void setSelectedCityId(int cityId);
+
+    void clear();
 }

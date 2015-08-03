@@ -58,7 +58,8 @@ public class WeatherActivity extends AppCompatActivity {
     //todo add @BindArray when it's available
     private int[] cityIds;
 
-    private ObjectGraph objectGraph;
+    //visible for testing
+    ObjectGraph objectGraph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

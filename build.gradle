@@ -21,6 +21,7 @@ allprojects {
 ext {
     daggerVersion = '1.2.2'
     appCompatVersion = '22.2.1'
+    espressoVersion = '2.2'
 }
 
 subprojects {

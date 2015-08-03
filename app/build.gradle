@@ -10,9 +10,12 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     lintOptions {
+        //required by Butterknife
         disable 'InvalidPackage'
     }
 
@@ -34,4 +37,12 @@ dependencies {
     compile "com.android.support:design:$appCompatVersion"
 
     compile 'com.jakewharton:butterknife:7.0.1'
+
+    androidTestCompile ("com.android.support.test.espresso:espresso-core:$espressoVersion") {
+        exclude module: 'support-annotations'
+    }
+    androidTestCompile ("com.android.support.test.espresso:espresso-contrib:$espressoVersion") {
+        exclude module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+    }
 }
