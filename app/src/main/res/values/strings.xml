@@ -6,7 +6,6 @@
     <string name="temp">Temperature</string>
     <string name="temp_high">Temperature High</string>
     <string name="temp_low">Temperature Low</string>
-    <string name="city">City</string>
     <string name="humidity">Humidity</string>
     <string name="wind">Wind Speed</string>
     <string name="wind_direction">Wind direction</string>
