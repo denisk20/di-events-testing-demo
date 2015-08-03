@@ -29,7 +29,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 public class WeatherActivityTest  {
 
     @Rule
-    public ActivityTestRule<WeatherActivity> mActivityRule = new ActivityTestRule(WeatherActivity.class);
+    public ActivityTestRule<WeatherActivity> activityRule = new ActivityTestRule(WeatherActivity.class);
 
     @Module(
             injects = WeatherActivityTest.class,
@@ -43,7 +43,7 @@ public class WeatherActivityTest  {
     @Before
     public void setUp() throws Exception {
 
-        WeatherActivity activity = mActivityRule.getActivity();
+        WeatherActivity activity = activityRule.getActivity();
 
         activity.objectGraph
                 .plus(new WeatherActivityTestModule())
