@@ -5,15 +5,12 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
-import com.denisk.android.weatherdemo.managers.IPreferencesManager;
 import com.denisk.android.weatherdemo.managers.di.ManagersModule;
 import dagger.Module;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import javax.inject.Inject;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -40,8 +37,6 @@ public class WeatherActivityTest  {
     )
     static class WeatherActivityTestModule {
     }
-
-    @Inject IPreferencesManager preferencesManager;
 
     @Before
     public void setUp() throws Exception {
@@ -74,6 +69,9 @@ public class WeatherActivityTest  {
 
     @Test
     public void testDropdownText() throws Exception {
+        //Lviv is displayed second in the list so it shouldn't be visible until we click the dropdown.
+        //This check is for demonstration purposes only, we probably shouldn't care about the order of dropdown
+        //items in real life.
         onView(withText("Lviv")).check(doesNotExist());
         onView(withId(R.id.city_selector)).perform(click());
         onView(withText("Lviv")).check(matches(isDisplayed()));
