@@ -22,10 +22,13 @@ import javax.inject.Singleton;
         library = true
 )
 public class ManagersModule {
+
+    public static final String WEATHER_PREFS = "weather_prefs";
+
     @Provides
     @Singleton
     SharedPreferences provideSharedPreferences(Context context) {
-        return context.getSharedPreferences("weather_prefs", Context.MODE_PRIVATE);
+        return context.getSharedPreferences(WEATHER_PREFS, Context.MODE_PRIVATE);
     }
 
     @Provides

@@ -1,9 +1,12 @@
 package com.denisk.android.weatherdemo;
 
+import android.content.Context;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 import com.denisk.android.weatherdemo.managers.IPreferencesManager;
+import com.denisk.android.weatherdemo.managers.di.ManagersModule;
 import dagger.Module;
 import org.junit.Before;
 import org.junit.Rule;
@@ -43,13 +46,16 @@ public class WeatherActivityTest  {
     @Before
     public void setUp() throws Exception {
 
+        //we need to clear preferences before getActivity() is called so we can't use preferencesManager for that
+        //(it is not instantiated yet).
+        InstrumentationRegistry.getTargetContext().getSharedPreferences(ManagersModule.WEATHER_PREFS, Context.MODE_PRIVATE)
+                .edit().clear().commit();
+
         WeatherActivity activity = activityRule.getActivity();
 
         activity.objectGraph
                 .plus(new WeatherActivityTestModule())
                 .inject(this);
-
-        preferencesManager.clear();
     }
 
     @Test
