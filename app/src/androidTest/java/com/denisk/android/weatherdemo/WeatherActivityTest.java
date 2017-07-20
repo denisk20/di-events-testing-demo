@@ -25,7 +25,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
  * @since 8/3/15.
  */
 @RunWith(AndroidJUnit4.class)
-@LargeTest
 public class WeatherActivityTest  {
 
     @Rule
