@@ -48,4 +48,5 @@ dependencies {
         exclude module: 'recyclerview-v7'
         exclude module: 'support-v4'
     }
+    androidTestCompile('com.xamarin.testcloud:espresso-support:1.1')
 }

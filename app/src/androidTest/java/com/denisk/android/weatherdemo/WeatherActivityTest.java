@@ -4,9 +4,11 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.test.suitebuilder.annotation.LargeTest;
 import com.denisk.android.weatherdemo.managers.di.ManagersModule;
+import com.xamarin.testcloud.espresso.Factory;
+import com.xamarin.testcloud.espresso.ReportHelper;
 import dagger.Module;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,7 +21,6 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-
 /**
  * @author denisk
  * @since 8/3/15.
@@ -30,6 +31,8 @@ public class WeatherActivityTest  {
     @Rule
     public ActivityTestRule<WeatherActivity> activityRule = new ActivityTestRule<>(WeatherActivity.class);
 
+    @Rule
+    public ReportHelper reportHelper = Factory.getReportHelper();
     @Module(
             injects = WeatherActivityTest.class,
             complete = false
@@ -52,6 +55,10 @@ public class WeatherActivityTest  {
                 .inject(this);
     }
 
+    @After
+    public void tearDown() {
+        reportHelper.label("Tearing down");
+    }
     @Test
     public void testBaseUi() {
         onView(withText(R.string.temp)).check(matches(isDisplayed()));
